@@ -15,47 +15,70 @@ console.log('Test - should say "Hello World!"', hello());
 // 2. Function to return an personalized hello, using the `name` argument.
 //    for example 'Hello, Jo!', or 'Hello, Stacy!'
 function helloName(name) {
-  return;
+  return 'Hello, ' + name + '!';
 }
 // Remember to call the function to test
-
+console.log(helloName('Megan'));
 
 // 3. Function to add two numbers together & return the result
-function addNumbers(firstNumber) {
-  // return firstNumber + secondNumber;
+function addNumbers(firstNumber, secondNumber) {
+  return firstNumber + secondNumber;
 }
-
+console.log(addNumbers(4, 6));
 
 // 4. Function to multiply three numbers & return the result
-function multiplyThree() {
-
+function multiplyThree(firstNumber, secondNumber, thirdNumber) {
+  return firstNumber * secondNumber * thirdNumber;
 }
-
+console.log(multiplyThree(2, 3, 4));
 
 // 5. Function that will return true if a number is positive, 
 //    or greater than zero, and false otherwise
 function isPositive(number) {
   if (number > 0) {
-    return;
+    return true;
   }
-  return;
+  return false;
 }
 // Call the function to test each outcome (true & false) 
 // Write a separate console.log statement for each outcome
-
+console.log(isPositive(4));
+console.log(isPositive(-4));
 
 // 6. Function to return the _last_ item in an array. If the 
 //    array is empty, return `undefined`.
 function getLast(array) {
-
+  if( array.length > 0 ){
+    let lastItem = array[array.length - 1];
+    return lastItem;
+  }
+  else {
+    return;
+  }
 }
+let testArrayWithThings = ['thing', 'thing2', 'thing3'];
+let testEmptyArray = [];
+console.log('This is the last item in an array with 3 things:', getLast(testArrayWithThings));
+console.log('This is the last item in an empty array:', getLast(testEmptyArray));
 
 // 7. Function to find a value in an array. Return true if the 
 //    value is found and false otherwise. Use a loop;
 //    DO NOT use Array.includes, Array.indexOf, or Array.find 
 function find(value, array) {
-
+  console.log('in find:', value, array);
+  for( let i=0; i < array.length; i++ ){
+    if( array[i] === value ){
+      return true;
+    }
+    else {
+      // do nothing
+    }
+  }
+  // after loop is done, then return false if nothing matches
+  return false;
 }
+let anotherTestArray = ['pizza', 'apple', 'potstickers'];
+console.log('This array has a matching value:', find('apple', anotherTestArray));
 
 // ----------------------
 // Stretch Goals
@@ -63,25 +86,53 @@ function find(value, array) {
 // 8. Function to check if a letter is the first letter in a 
 //    string. Return true if it is, and false otherwise
 function isFirstLetter(letter, string) {
-
+  console.log( 'in isFirstLetter:', letter, string );
+  if( letter === string[0] ){
+    return true;
+  }
+  else {
+    return false;
+  }
 }
-
+console.log('The letter is the first letter in the string:', isFirstLetter( 'h', 'hello world!' ));
+console.log('The letter is NOT the first letter in the string:', isFirstLetter( 'a', 'hello world!' ));
 
 // 9. Function to return the sum of all numbers in an array
 function sumAll(array) {
   let sum = 0;
   // TODO: loop to add items
-
+  for( let i=0; i<array.length; i++ ){
+    sum+= array[i];
+  }
   // TODO: return the sum
+  return sum;
 }
+let testSumArray = [ 2, 4, 6 ];
+console.log( 'This returns the sum of all numbers in an array:', sumAll( testSumArray ));
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
-function allPositive() {
-
+function allPositive( array ) {
+  let positives = [];
+  for( let i=0; i<array.length; i++ ){
+    if( array[i] > 0 ){
+      positives.push( array[i] );
+    }
+    else {
+      // do nothing
+    }
+  }
+  return positives;
 }
 
+let testPositivesArray = [ 2, -3, 5, -4, 6];
+let testNegativesArray = [ -2, -3, -4 ];
+
+let newPositivesArray = allPositive(testPositivesArray);
+console.log('These are all positives from an array:', newPositivesArray );
+let newNegativesArray = allPositive(testNegativesArray);
+console.log('These are all the positive values from an array of only negative numbers:', newNegativesArray );
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 
